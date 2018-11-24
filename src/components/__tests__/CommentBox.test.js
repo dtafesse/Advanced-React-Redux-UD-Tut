@@ -11,8 +11,7 @@ let wrapped;
 
 beforeEach(() => {
   // CommentBox needs to be wrapped with Root component
-  // to get access to the Redux store and
-  // get rid of errors - connect function in CommentBox
+  // to rid of errors - connect function in CommentBox
   // needs to access to the Provider tag, undo to see difference
 
   wrapped = mount(
