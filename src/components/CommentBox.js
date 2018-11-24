@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import * as actions from "actions/index";
 
 class CommentBox extends Component {
   state = {
@@ -15,7 +17,8 @@ class CommentBox extends Component {
   handleSubmit = event => {
     event.preventDefault();
 
-    //TODO: Call an action creator, and save the comment
+    // Call an action creator called - saveComment
+    this.props.saveComment(this.state.comment);
 
     this.setState({ comment: "" });
   };
@@ -33,4 +36,12 @@ class CommentBox extends Component {
   }
 }
 
-export default CommentBox;
+// first arugment is reserved for the mapStateToProps Function,
+// in this case, this component does not need access to the state
+// second arugment - wire up all action creators
+
+// connect([mapStateToProps], [mapDispatchToProps], [mergeProps], [options])
+export default connect(
+  null,
+  actions
+)(CommentBox);
