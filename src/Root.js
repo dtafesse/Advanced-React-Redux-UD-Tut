@@ -1,6 +1,7 @@
 import React from "react";
 import { Provider } from "react-redux";
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
+import reduxPromise from "redux-promise";
 import reducers from "reducers/index";
 
 // props children - wraps any child components
@@ -9,7 +10,11 @@ import reducers from "reducers/index";
 // child can be App component for example
 
 export default ({ children, initalState = {} }) => {
-  return (
-    <Provider store={createStore(reducers, initalState)}>{children}</Provider>
+  const store = createStore(
+    reducers,
+    initalState,
+    applyMiddleware(reduxPromise)
   );
+
+  return <Provider store={store}>{children}</Provider>;
 };
