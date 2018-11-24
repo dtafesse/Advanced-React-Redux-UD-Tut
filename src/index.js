@@ -1,16 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Provider } from "react-redux";
-import { createStore } from "redux";
-import reducers from "reducers/index";
+import Root from "Root";
 
 import App from "components/App";
 
-const initalState = {};
-
+// App will be passed as a child component to the Root component
 ReactDOM.render(
-  <Provider store={createStore(reducers, initalState)}>
+  <Root>
     <App />
-  </Provider>,
+  </Root>,
   document.querySelector("#root")
 );

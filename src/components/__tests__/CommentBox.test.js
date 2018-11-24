@@ -1,5 +1,6 @@
 import React from "react";
 import { mount } from "enzyme";
+import Root from "Root";
 import CommentBox from "components/CommentBox";
 
 // going to use fullDom ('mount') instead of shallow for practice
@@ -9,7 +10,16 @@ import CommentBox from "components/CommentBox";
 let wrapped;
 
 beforeEach(() => {
-  wrapped = mount(<CommentBox />);
+  // CommentBox needs to be wrapped with Root component
+  // to get access to the Redux store and
+  // get rid of errors - connect function in CommentBox
+  // needs to access to the Provider tag, undo to see difference
+
+  wrapped = mount(
+    <Root>
+      <CommentBox />
+    </Root>
+  );
 });
 
 afterEach(() => {
