@@ -11,6 +11,10 @@ export function saveComment(comment) {
 export function fetchComments() {
   const response = axios.get("http://jsonplaceholder.typicode.com/comments");
 
+  // promise midelware provides an extension
+  // point between dispatching an action,
+  // and the moment it reaches the reducer.
+
   return {
     type: FETCH_COMMENTS,
     payload: response
